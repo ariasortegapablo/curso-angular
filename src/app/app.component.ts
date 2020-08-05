@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { from,fromEvent } from 'rxjs'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -64,8 +64,20 @@ export class AppComponent implements OnInit {
           return 'no'
       }
       2 > 1 ? 'yes' : 'no'
+
+
+
+      ///////////
+
+      const array = from ([1,2,3,4,5,6]);
+      array.subscribe( s => console.log('item',s));
+
+
+    const aux8 = fromEvent(document, 'mousemove');
+    aux8.subscribe((s:any) => console.log('event', s.clientX+ ','+s.clientY))
+
   }
 
-
+    
 }
 
