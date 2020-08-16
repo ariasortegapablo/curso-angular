@@ -8,6 +8,7 @@ import { from,fromEvent } from 'rxjs'
 export class AppComponent implements OnInit {
   title = 'curso-angular';
   sw = true
+  persons=["marco","maria","jorge","lupe"]
   // tslint:disable-next-line:typedef
   ngOnInit(){
 

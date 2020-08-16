@@ -27,7 +27,7 @@ import {
 export class TestComponent implements OnInit, OnChanges, DoCheck
   , AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked,OnDestroy {
 
-  @Input() name:string
+  @Input() name:string;
 
   constructor() {
   }
