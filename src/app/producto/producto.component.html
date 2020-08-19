@@ -1,6 +1,7 @@
  
 <p>Amazon</p>
 <p>stock total: {{sumar()}} <p>
+  <p>calor <p>
 <div style="border:1px solid black;">
   
   <ng-container *ngFor="let aux of producto">
@@ -28,6 +29,7 @@
     
 </div>
 <br>
+<p>frio <p>
 <div style="border:1px solid black;">
   <ng-container *ngFor="let aux of producto">
     <ng-container *ngIf="aux.tipo === 'frio'">
