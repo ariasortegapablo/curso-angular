@@ -15,7 +15,7 @@ import {
   template:
     `<div style=" border: 1px solid red;">
   <p> TEST</p>
-  <input type="text" [(ngModel)] = "name">
+
 
   <p> valor var name: {{name}}</p>
 </div>>
@@ -27,9 +27,21 @@ import {
 export class TestComponent implements OnInit, OnChanges, DoCheck
   , AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked,OnDestroy {
 
-  @Input() name:string;
+
 
   constructor() {
+  }
+
+  intermediario:String;
+  
+
+
+  @Input()
+  get name(){
+    return this.intermediario;
+  }
+  set name(name){
+    this.intermediario=name;
   }
 
   ngOnInit() {
