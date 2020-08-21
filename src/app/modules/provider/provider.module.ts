@@ -13,7 +13,8 @@ import { Provider2Component } from './components/provider2/provider2.component';
      Provider2Component
   ],
   exports:[
- 
+     Provider1Component,
+     Provider2Component
   ]
 })
 export class ProviderModule { }

@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Client1Component } from './components/client1/client1.component';
 import { Client2Component } from './components/client2/client2.component';
+import { ProviderModule } from '../provider/provider.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    ProviderModule
   ],
   declarations: [
     Client1Component,
@@ -14,8 +18,8 @@ import { Client2Component } from './components/client2/client2.component';
   ],
   exports : [
     Client1Component,
-    Client2Component
-   
+    Client2Component,
+      
   ]
 })
 export class ClientModule { }
