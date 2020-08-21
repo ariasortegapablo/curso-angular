@@ -5,18 +5,21 @@ import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 import { TallaPipe } from './talla.pipe';
 import { ProductModule } from './modules/product/product.module';
+import { ClientModule } from './modules/client/client.module';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TallaPipe
+    TallaPipe,
      ],
   imports: [
     BrowserModule,
     FormsModule,
-    ProductModule
+    ProductModule,
+    ClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
