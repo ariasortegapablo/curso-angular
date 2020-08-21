@@ -2,22 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ProductoComponent } from './producto/producto.component';
 import {FormsModule} from '@angular/forms';
 import { TallaPipe } from './talla.pipe';
+import { ProductModule } from './modules/product/product.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductoComponent,
     TallaPipe
-    
-  ],
+     ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
