@@ -1,5 +1,21 @@
-<p>admin works!</p>
-
-<button routerLink="/home/home1">irHome1</button>
-<router-outlet>
-</router-outlet>
+<form [formGroup]="productForm" (ngSubmit)="onEnviar2()">
+  <label >Nombre</label>
+  <input name="name"
+         formControlName="name"
+         type="text"
+         required="true"
+  />
+  <label >Edad</label>
+  <input age="age"
+         formControlName="age"
+         type="text" />
+  <label >Habilitado</label>
+  <input enable="enable"
+         formControlName="enable"
+         type="text" />
+  <label >Url Image</label>
+  <input urlImage="urlImage"
+         formControlName="urlImage"
+         type="text" />
+  <button type="submit" class="btn-send">Crear</button>
+</form>

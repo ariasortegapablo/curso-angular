@@ -1,10 +1,67 @@
-<p>home works!</p>
+<div class="row">
+
+<p  >MAYORES 65</p>
 
 
-<button routerLink="home1">home1</button>
-<button routerLink="home2">home2</button>
+    <ng-container *ngFor="let product of products">
+      <ng-container *ngIf="product.age >=  65">
+        <p class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+           style="padding: 50px; display: flex; justify-content: center;">
+        <mat-card [ngStyle]="{'background-color': product.enable ? 'orange' : 'red' } "  class="example-card"  >
+      <mat-card-header >
+        <mat-card-title>Nombre: {{product.name.toUpperCase()}}</mat-card-title>
+        <mat-card-subtitle>Edad: {{product.age}} </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="product.enable">habilitado: si </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="!product.enable">habilitado: no </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="product.urlImage" alt="Photo of a Shiba Inu">
 
-<div style="border: 1px solid green">
-<router-outlet>
-</router-outlet>
+      <mat-card-actions>
+        <button mat-button>Edit</button>
+        <button mat-button (click) ="onDelete(product.id)" >Delete</button>
+      </mat-card-actions>
+    </mat-card>
+        </p>
+    </ng-container>
+    </ng-container>
+
+  </div>
+
+<div class="row">
+
+  <h1 style="justify-content: center" >MENORES 65</h1>
+
+
+    <ng-container *ngFor="let product of products">
+      <ng-container *ngIf="product.age <  65">
+        <p class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+           style="padding: 50px; display: flex; justify-content: center;">
+        <mat-card [ngStyle]="{'background-color': product.enable ? 'orange' : 'red' } "class="example-card" >
+          <mat-card-header >
+            <mat-card-title>Nombre: {{product.name.toUpperCase()}}</mat-card-title>
+            <mat-card-subtitle>Edad: {{product.age}} </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="product.enable">habilitado: si </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="!product.enable">habilitado: no </mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="product.urlImage" alt="Photo of a Shiba Inu">
+
+          <mat-card-actions>
+            <button mat-button>Edit</button>
+            <button mat-button (click) ="onDelete(product.id)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+        </p>
+      </ng-container>
+    </ng-container>
 </div>
+
+
+
+
+
+
+
+
+
+
+
