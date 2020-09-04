@@ -11,6 +11,11 @@ import {AppRoutingModule} from './app-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
 import { Home1Component } from './components/home/home1/home1.component';
 import { Home2Component } from './components/home/home2/home2.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {MatSliderModule} from '@angular/material/slider';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -21,12 +26,17 @@ import { Home2Component } from './components/home/home2/home2.component';
     AboutComponent,
     AdminComponent,
     Home1Component,
-    Home2Component
+    Home2Component,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
