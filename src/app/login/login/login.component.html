@@ -5,10 +5,7 @@
 
 
 
-<div #test class="class1 class2" id="test2" >Hola</div>
-<button (click)="sw = !sw">SW</button>
-<div *ngIf="sw else esFalse">esverdad</div>
 
-<ng-template #esFalse>
-    <p>esFalse</p>
-</ng-template>
+<button (click)="sw = !sw">SW</button>
+<p>{{sw}}</p>
+<p *ngElse="sw">Se muestra si es falso</p>

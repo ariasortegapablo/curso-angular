@@ -10,12 +10,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatIconModule} from '@angular/material/icon';
 import {AppRoutingModule} from './app-routing.module';
+import { NgElseDirective } from './directives/ng-else.directive';
 
 
 
 @NgModule({
   declarations: [
     AppComponent
+
 
 
   ],
