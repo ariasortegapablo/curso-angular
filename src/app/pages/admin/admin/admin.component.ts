@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import validate = WebAssembly.validate;
 import {ProductService} from '../../../service/product..service';
+import {subscriptionLogsToBeFn} from 'rxjs/internal/testing/TestScheduler';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit,OnDestroy {
 
    productForm: FormGroup;
-
+   productSubs: Subscription
    // nameControl= new FormControl();
 
   constructor(private formBuilder: FormBuilder,
@@ -37,12 +39,15 @@ export class AdminComponent implements OnInit {
    onEnviar2() :void{
 
     console.log('FORM GROUP',this.productForm.value);
-    this.productService.addProduct(this.productForm.value).subscribe(res =>
+   this.productSubs=  this.productService.addProduct(this.productForm.value).subscribe(res =>
     {console.log("RESP FORM",res)},
       err => {
       console.log("ERROR DE SERVIDOR")
       }
 
     );
+   }
+   ngOnDestroy() : void{
+     this.productSubs? this.productSubs.unsubscribe():''
    }
 }
