@@ -14,4 +14,5 @@ export class ProductService {
   addProduct(product:any) : Observable<any>{
     return this.http.post("https://agumon-13.firebaseio.com/products.json",product);
   }
+
 }
