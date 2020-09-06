@@ -21,15 +21,27 @@
 <!--<button (click)="onLogin2(form)">Login </button>-->
 
 <!--ejemplo 3-->
-<div style="display: flex;flex-direction: column;">
-  <form (ngSubmit)="onLogin2(form)" #form="ngForm" >
-    <input type="text" name="username" ngModel>
-    <input type="password" name="password" ngModel>
-    <button type="submit">ENVIAR</button>
-  </form>
+<!--<div style="display: flex;flex-direction: column;">-->
+<!--  <form (ngSubmit)="onLogin2(form)" #form="ngForm" >-->
+<!--    <input type="text" name="username" ngModel>-->
+<!--    <input type="password" name="password" ngModel>-->
+<!--    <button type="submit">ENVIAR</button>-->
+<!--  </form>-->
+<!--</div>-->
+
+<input class="form-control" type="text" required minlength="3" maxlength="5" ngModel #name="ngModel">
+
+<div *ngIf="name.invalid && (name.touched || name.dirty)" class="alert-danger">
+    <div *ngIf="name.errors.required">
+        Name is required
+    </div>
+  <div *ngIf="name.errors.minlength">
+     Name must have 3 characteres min
+  </div>
+  <div *ngIf="name.errors.maxlength">
+    Name must have 5 characteres max
+  </div>
 </div>
-
-
 <!--<button routerLink="/pages">Pages</button>-->
 <!--<button (click)="sw = !sw">SW</button>-->
 <!--<p>{{sw}}</p>-->
