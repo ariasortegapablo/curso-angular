@@ -10,7 +10,8 @@ export class ProductService {
 
   getProducts() : Observable<any>{
     return this.http.get("https://agumon-13.firebaseio.com/products.json");
-
-
+  }
+  addProduct(product:any) : Observable<any>{
+    return this.http.post("https://agumon-13.firebaseio.com/products.json",product);
   }
 }
