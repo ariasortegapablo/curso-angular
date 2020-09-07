@@ -16,8 +16,10 @@ export class AdminComponent implements OnInit,OnDestroy {
    products= [];
    productForm: FormGroup;
    productSubs: Subscription;
+  productDeleteSubs: Subscription;
    productGetSubs : Subscription;
-
+   productUpdateSubs: Subscription;
+   idEdit: any;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -50,13 +52,30 @@ export class AdminComponent implements OnInit,OnDestroy {
     });
   }
   onDelete(id: any): void{
-    this.productService.deleteProduct(id).subscribe(res =>{
+    this.productDeleteSubs=this.productService.deleteProduct(id).subscribe(res =>{
       console.log('RESP',res);
       this.loadProducts();
     },
       error => {
       console.log("error")
       });
+  }
+  onEdit(product):void{
+    this.idEdit=product.id;
+    console.log(this.idEdit)
+   this.productForm.patchValue(product)
+
+  }
+  onUpdateProduct(): void {
+    this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productForm.value).subscribe(
+      res => {
+        console.log('RESP UPDATE: ', res);
+        this.loadProducts();
+      },
+      err => {
+        console.log('ERROR UPDATE DE SERVIDOR');
+      }
+    );
   }
 
    onEnviar2() :void{
@@ -71,7 +90,9 @@ export class AdminComponent implements OnInit,OnDestroy {
     );
    }
    ngOnDestroy() : void{
-     this.productSubs? this.productSubs.unsubscribe():'';
+     this.productSubs ? this.productSubs.unsubscribe() : '';
      this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
+     this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
+     this.productUpdateSubs ? this.productUpdateSubs.unsubscribe() : '';
    }
 }
