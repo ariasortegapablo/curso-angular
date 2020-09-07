@@ -81,8 +81,10 @@ export class AdminComponent implements OnInit,OnDestroy {
    onEnviar2() :void{
 
     console.log('FORM GROUP',this.productForm.value);
-   this.productSubs=  this.productService.addProduct(this.productForm.value).subscribe(res =>
-    {console.log("RESP FORM",res)},
+   this.productSubs=  this.productService.addProduct(this.productForm.value).subscribe(res =>{
+    console.log("RESP FORM",res)
+       this.loadProducts();
+    },
       err => {
       console.log("ERROR DE SERVIDOR")
       }
