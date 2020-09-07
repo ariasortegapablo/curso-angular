@@ -5,6 +5,7 @@ import {ProductService} from '../../../service/product..service';
 import {subscriptionLogsToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {Subscription} from 'rxjs';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,16 +13,25 @@ import {Subscription} from 'rxjs';
 })
 export class AdminComponent implements OnInit,OnDestroy {
 
+   products= [];
    productForm: FormGroup;
-   productSubs: Subscription
+   productSubs: Subscription;
+   productGetSubs : Subscription;
+
    // nameControl= new FormControl();
 
   constructor(private formBuilder: FormBuilder,
-              private productService:ProductService) {
+              private productService:ProductService){
+    this.productGetSubs=this.productService.getProducts().subscribe(res => {
+      Object.entries(res).map(p => this.products.push(p[1]));
+    });
 
   }
 
   ngOnInit(): void {
+
+
+
    this.productForm=this.formBuilder.group(
      {
        description:['',[Validators.required,Validators.minLength(3)]],
@@ -48,6 +58,7 @@ export class AdminComponent implements OnInit,OnDestroy {
     );
    }
    ngOnDestroy() : void{
-     this.productSubs? this.productSubs.unsubscribe():''
+     this.productSubs? this.productSubs.unsubscribe():'';
+     this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
    }
 }
