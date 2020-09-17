@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductService} from '../../../service/product..service';
+import {ProductService} from '../../shared/service/product..service';
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

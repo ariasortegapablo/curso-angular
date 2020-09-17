@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   app:{
     apiBaseUrl:'https://agumon-13.firebaseio.com/'
   },
@@ -11,7 +11,6 @@ export const environment = {
     apiBaseUrl: 'https://identitytoolkit.googleapis.com',
     key:'AIzaSyAKZOJMl6bVdtaVhJwgkIres03kNFtkpeI'
   }
-
 };
 
 /*

@@ -1,13 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import validate = WebAssembly.validate;
-import {ProductService} from '../../../service/product..service';
+import {ProductService} from '../../shared/service/product..service';
 import {subscriptionLogsToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {Subscription} from 'rxjs';
 
 
 @Component({
-  selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })

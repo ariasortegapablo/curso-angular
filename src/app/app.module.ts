@@ -9,10 +9,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatSliderModule} from '@angular/material/slider';
 import {MatIconModule} from '@angular/material/icon';
-import {AppRoutingModule} from './app-routing.module';
-import { NgElseDirective } from './directives/ng-else.directive';
+import {RouterModule, Routes} from '@angular/router';
 
+const routes: Routes = [
 
+  {path:'',redirectTo:'login',pathMatch:'full'},
+  {path:'login',loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+  {path:'pages',loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)},
+
+];
 
 @NgModule({
   declarations: [
@@ -28,7 +33,7 @@ import { NgElseDirective } from './directives/ng-else.directive';
     BrowserAnimationsModule,
     MatIconModule,
     MatSliderModule,
-    AppRoutingModule
+   RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]

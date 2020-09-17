@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../../service/auth..service';
+import {AuthService} from '../shared/service/auth..service';
 
 @Component({
-  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -15,6 +14,7 @@ export class LoginComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit(): void {
+
   }
    onLogin(form: any) : void{
      console.log('FORM: ', form.value);
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
      }).subscribe(
        res => {
          console.log('LOGIN RESPONSE: ', res);
-      //   this.router.navigate(['pages']);
+
        },
        err => {
          console.log('LOGIN ERROR: ');
