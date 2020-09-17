@@ -15,6 +15,7 @@ export const environment = {
 };
 
 /*
+https://agumon-13.firebaseio.com/products.json?auth=AAAA & orderBy="ownerId"&equalTo="1"&sprint=pretty
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *
