@@ -1,0 +1,54 @@
+<!--ejemplo1-->
+<!--<input type="text" [formControl]="nameControl">-->
+<!--<button (click)="onEnviar()">Enviar</button>-->
+<div>
+  <app-header></app-header>
+</div>
+<div >
+  <app-editcreate></app-editcreate>
+</div>
+
+
+
+
+   <p>NATIONAL</p>
+    <!--  <p *ngIf="getTotalStock() === 0">-->
+    <div style="display: flex; flexDirection: row;">
+
+      <ng-container *ngFor="let aux of products">
+      <ng-container *ngIf="aux.type === 'nacional'">
+        <p style="display: flex; flexDirection: column;">
+      <app-body [enable]=aux.enable [stock]=aux.stock [name]=aux.name [image]=aux.urlImage ></app-body>
+        <button mat-button >Edit</button>
+        <button mat-button (click)="onDelete(aux.id)">Delete</button>
+        </p>
+     </ng-container>
+      </ng-container>
+    </div>
+
+  <p>INTERNATIONAL</p>
+  <div style="display: flex; flexDirection: row;">
+    <ng-container *ngFor="let aux of products">
+     <ng-container *ngIf="aux.type === 'internacional'">
+       <p style="display: flex; flexDirection: column;">
+     <app-body  [enable]=aux.enable [stock]=aux.stock [name]=aux.name [image]=aux.urlImage ></app-body>
+       <button mat-button >Edit</button>
+       <button mat-button (click)="onDelete(aux.id)">Delete</button>
+       </p>
+
+      </ng-container>
+
+    </ng-container>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

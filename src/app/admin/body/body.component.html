@@ -1,0 +1,12 @@
+<mat-card class="example-card">
+  <p [ngStyle]="{'background-color': stock > 0 ? 'orange' : 'red' }">
+   <mat-card-content >
+    <img mat-card-image src="{{image}}" alt="Photo of a Shiba Inu">
+
+    <mat-card-subtitle>Name:{{name | uppercase}}</mat-card-subtitle>
+    <mat-card-subtitle>Stock:{{stock}}</mat-card-subtitle>
+    <mat-card-subtitle>Enable:{{enable}}</mat-card-subtitle>
+
+  </mat-card-content>
+  </p>
+  </mat-card>

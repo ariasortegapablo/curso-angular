@@ -9,7 +9,7 @@ export class AppComponent  {
   ngOnInit() {
 
 
-    //arrow function
+
 
 
   }

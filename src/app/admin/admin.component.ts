@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import validate = WebAssembly.validate;
-import {ProductService} from '../../shared/service/product..service';
+import {ProductService} from '../shared/service/product..service';
 import {subscriptionLogsToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {Subscription} from 'rxjs';
 
@@ -12,13 +12,14 @@ import {Subscription} from 'rxjs';
 })
 export class AdminComponent implements OnInit,OnDestroy {
 
-   products= [];
-   productForm: FormGroup;
-   productSubs: Subscription;
+
+  products= [];
+    productForm: FormGroup;
+  productSubs: Subscription;
   productDeleteSubs: Subscription;
-   productGetSubs : Subscription;
-   productUpdateSubs: Subscription;
-   idEdit: any;
+  productGetSubs : Subscription;
+  productUpdateSubs: Subscription;
+  idEdit: any;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -33,36 +34,42 @@ export class AdminComponent implements OnInit,OnDestroy {
 
     this.loadProducts();
 
-   this.productForm=this.formBuilder.group(
-     {
-       description:['',[Validators.required,Validators.minLength(3)]],
-       imageUrl:'',
-       ownerId:'',
-       price:'',
-       title:''
-     }
-   );
+    this.productForm=this.formBuilder.group(
+      {
+        // description:['',[Validators.required,Validators.minLength(3)]],
+         enable:'',
+        name:'',
+        stock:'',
+        type:'',
+        urlImage:''
+      }
+    );
   }
   loadProducts() : void{
-    this.products=[];
-    this.productGetSubs=this.productService.getProducts().subscribe(res => {
-      Object.entries(res).map((p:any) => this.products.push({id:p[0],...p[1]}));
+       this.productGetSubs=this.productService.getProducts().subscribe(res => {
+      Object.entries(res).map((p:any) =>
 
+    this.products.push({id:p[0],...p[1]}))
+
+
+console.log(this.products)
     });
+
+
   }
   onDelete(id: any): void{
     this.productDeleteSubs=this.productService.deleteProduct(id).subscribe(res =>{
-      console.log('RESP',res);
-      this.loadProducts();
-    },
+        console.log('RESP',res);
+        this.loadProducts();
+      },
       error => {
-      console.log("error")
+        console.log("error")
       });
   }
   onEdit(product):void{
     this.idEdit=product.id;
     console.log(this.idEdit)
-   this.productForm.patchValue(product)
+    this.productForm.patchValue(product)
 
   }
   onUpdateProduct(): void {
@@ -81,24 +88,24 @@ export class AdminComponent implements OnInit,OnDestroy {
     );
   }
 
-   onEnviar2() :void{
+  onEnviar2() :void{
 
     console.log('FORM GROUP',this.productForm.value);
-   this.productSubs=  this.productService.addProduct(
-     {...this.productForm.value,ownerId: localStorage.getItem('userId')}).subscribe(res =>{
-    console.log("RESP FORM",res)
-       this.loadProducts();
-    },
+    this.productSubs=  this.productService.addProduct(
+      {...this.productForm.value,ownerId: localStorage.getItem('userId')}).subscribe(res =>{
+        console.log("RESP FORM",res)
+        this.loadProducts();
+      },
       err => {
-      console.log("ERROR DE SERVIDOR")
+        console.log("ERROR DE SERVIDOR")
       }
 
     );
-   }
-   ngOnDestroy() : void{
-     this.productSubs ? this.productSubs.unsubscribe() : '';
-     this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
-     this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
-     this.productUpdateSubs ? this.productUpdateSubs.unsubscribe() : '';
-   }
+  }
+  ngOnDestroy() : void{
+    this.productSubs ? this.productSubs.unsubscribe() : '';
+    this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
+    this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
+    this.productUpdateSubs ? this.productUpdateSubs.unsubscribe() : '';
+  }
 }

@@ -12,10 +12,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {AuthService} from '../shared/service/auth..service';
 import {RouterModule, Routes} from '@angular/router';
+import {LoginRoutingModule} from './login-routing.module';
 
-const routes: Routes = [
-  {path:'',component:LoginComponent}
-];
 
 @NgModule({
   declarations: [
@@ -29,7 +27,7 @@ const routes: Routes = [
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
-        RouterModule.forChild(routes)
+        LoginRoutingModule
     ],
   providers:[
     AuthService

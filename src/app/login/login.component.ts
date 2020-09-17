@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
      }).subscribe(
        res => {
          console.log('LOGIN RESPONSE: ', res);
-         this.router.navigate(['pages'])
+         this.router.navigate(['admin'])
        },
        err => {
          console.log('LOGIN ERROR: ');
